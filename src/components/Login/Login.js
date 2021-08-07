@@ -20,7 +20,16 @@ const Login = (props) => {
             email: email,
             password: password,
         }
-        UserService.login(body)
+        UserService.login(body).then(res => {
+            if (res.error) {
+                // to be displayed
+                console.log(res.error)
+            }
+            else {
+                localStorage.setItem("isAuthenticated", "true");
+                localStorage.setItem("token", res.token);
+            }
+        }).catch(error => console.log(error))
     }
     
     return (
