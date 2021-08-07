@@ -11,6 +11,7 @@ import {
 import Login from "../Login/Login";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Dashboard from "../Dashboard/Dashboard"
+import Register from "../Register/Register";
 
 const Navbar = (props) => {
 
@@ -31,6 +32,7 @@ const Navbar = (props) => {
 
             <Switch>
                 <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
                 <ProtectedRoute path="/dashboard" component={Dashboard} /> 
             </Switch>
         </Router>
