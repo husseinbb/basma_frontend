@@ -1,12 +1,9 @@
-import React ,{ useState ,useEffect} from "react";
+import React ,{ useState} from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  Redirect,
-  withRouter,
-  BrowserRouter
 } from "react-router-dom";
 import Login from "../Login/Login";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { UserService } from '../../services/UserService';
 import SuccessfullRegistration from './SuccessfullRegistration';
 

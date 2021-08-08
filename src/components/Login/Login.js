@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { UserService } from '../../services/UserService';
-import {
-    Redirect
-  } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const Login = (props) => {
 
