@@ -52,8 +52,13 @@ export class UserService {
         return parsedData
     }
 
-    static getCustomers = (params) => {
-        const customersPromise = Axios.get(`${ConstantsService.baseUrl}/customers`, {params: params}).then(res => ({
+    static getCustomers = (params, page = null) => {
+        let url = `${ConstantsService.baseUrl}/customers`
+        if (page) {
+            url = `${ConstantsService.baseUrl}/customers?page=${page}`
+        }
+        console.log(url)
+        const customersPromise = Axios.get(url, {params: params}).then(res => ({
             ...UserService.parseCustomersData(res.data)
         }));
         return customersPromise;
