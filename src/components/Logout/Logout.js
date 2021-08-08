@@ -11,6 +11,7 @@ const Logout = (props) => {
                 if (res.success && res.success === true) {
                     localStorage.removeItem('token')
                     localStorage.removeItem('isAuthenticated');
+                    props.onChange(false)
                 }
             }).catch(error => console.log(error))
         }

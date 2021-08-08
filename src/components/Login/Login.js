@@ -28,6 +28,7 @@ const Login = (props) => {
             else {
                 localStorage.setItem("isAuthenticated", "true");
                 localStorage.setItem("token", res.token);
+                props.onChange(true)
             }
         }).catch(error => console.log(error))
     }

@@ -16,6 +16,12 @@ import Logout from "../Logout/Logout";
 
 const Navbar = (props) => {
 
+    let [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const handleLoggedIn = (isLoggedIn) => {
+        setIsLoggedIn(isLoggedIn)
+    }
+
     return (
         <Router>
             <nav className="navbar navbar-expand-lg navbar-light bg-light p-2">
@@ -26,21 +32,31 @@ const Navbar = (props) => {
                         <Link className='nav-link' to="/register">Register</Link>
                     </li> 
                     <li className='nav-item'>
-                        {/* {isAuthenticated ?  */}
+                        {isLoggedIn ? 
                             <Link className='nav-link' to="/logout">Logout</Link>
-                            {/* : */}
+                             : 
                             <Link className='nav-link' to="/login">Login</Link>
-                        {/* } */}
+                        } 
        
                     </li> 
                 </ul>
             </nav>
 
             <Switch>
-                <Route exact path="/login" component={Login} />
+                <Route exact path="/login">
+                    <Login  onChange={(newValue)=>{
+                        handleLoggedIn(newValue)
+                        }}
+                    /> 
+                </Route>
                 <Route exact path="/register" component={Register} />
                 <ProtectedRoute path="/dashboard" component={Dashboard} />
-                <ProtectedRoute path="/logout" component={Logout} />  
+                <ProtectedRoute path="/logout">
+                <Logout  onChange={(newValue)=>{
+                        handleLoggedIn(newValue)
+                        }}
+                    /> 
+                </ProtectedRoute>  
             </Switch>
         </Router>
 
