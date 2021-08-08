@@ -37,7 +37,6 @@ export class UserService {
     }
 
     static logout = (token) => {
-        console.log(`${ConstantsService.baseUrl}/logout/?token=${token}`)
         const logoutPromise = Axios.get(`${ConstantsService.baseUrl}/logout/?token=${token}`).then(res => ({
             ...UserService.parseLogoutData(res.data)
         }));
@@ -49,6 +48,38 @@ export class UserService {
             message: data.message,
             error: data.error,
             success: data.success,
+        };
+        return parsedData
+    }
+
+    static getCustomers = (params) => {
+        const customersPromise = Axios.get(`${ConstantsService.baseUrl}/customers`, {params: params}).then(res => ({
+            ...UserService.parseCustomersData(res.data)
+        }));
+        return customersPromise;
+    } 
+
+    static parseCustomersData(data) {
+        const parsedData = {
+            success: data.success,
+            customers: data.customers,
+            error: data.error,
+        };
+        return parsedData
+    }
+
+    static getAverageCustomers = (params) => {
+        const averageCustomersPromise = Axios.get(`${ConstantsService.baseUrl}/customers/average-registered`, {params: params}).then(res => ({
+            ...UserService.parseAverageCustomersData(res.data)
+        }));
+        return averageCustomersPromise;
+    } 
+
+    static parseAverageCustomersData(data) {
+        const parsedData = {
+            success: data.success,
+            average: data.average,
+            error: data.error,
         };
         return parsedData
     }
