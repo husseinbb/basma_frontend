@@ -38,8 +38,6 @@ const Login = (props) => {
             }
         }).catch(error => console.log(error))
     }
-
-    console.log(redirectTo)
     
     return (
         <div>
