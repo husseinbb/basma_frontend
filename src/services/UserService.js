@@ -35,4 +35,21 @@ export class UserService {
         };
         return parsedData
     }
+
+    static logout = (token) => {
+        console.log(`${ConstantsService.baseUrl}/logout/?token=${token}`)
+        const logoutPromise = Axios.get(`${ConstantsService.baseUrl}/logout/?token=${token}`).then(res => ({
+            ...UserService.parseLogoutData(res.data)
+        }));
+        return logoutPromise;
+    } 
+
+    static parseLogoutData(data) {
+        const parsedData = {
+            message: data.message,
+            error: data.error,
+            success: data.success,
+        };
+        return parsedData
+    }
 }
