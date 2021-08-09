@@ -8,6 +8,7 @@ const Dashboard = (props) => {
 
     let [filterRequestParam, setFilterRequestParam] = useState({email:"", id: 0, firstName: "", pagination: 10});
     let [page, setPage] = useState(0);
+    let [error, setError] = useState(null);
 
 
     useEffect(()=>{
@@ -16,6 +17,9 @@ const Dashboard = (props) => {
         UserService.getCustomers(params).then(res => {
             if (res.customers) {
                 setCustomers(res.customers)
+            }
+            else if (res.error) {
+                setError(res.error)
             }
         }).catch(error => console.log(error))
 
@@ -71,6 +75,14 @@ const Dashboard = (props) => {
                 setCustomers(res.customers)
             }
         }).catch(error => console.log(error))
+    }
+
+    if (error !== null) {
+        return (
+            <div className="text-center m-5 text-danger">
+                <h2>{error}</h2>
+            </div>
+        )
     }
 
     return (
