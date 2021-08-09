@@ -72,6 +72,7 @@ const Dashboard = (props) => {
         const params = getCustomersParams()
         UserService.getCustomers(params, page.selected).then(res => {
             if (res.customers) {
+                setPage(0)
                 setCustomers(res.customers)
             }
         }).catch(error => console.log(error))
