@@ -1,7 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { UserService } from '../../services/UserService';
+import { Redirect } from "react-router-dom";
+
 
 const Logout = (props) => {
+
+    let [redirectTo, setRedirectTo] = useState('/logout');
 
     const token = localStorage.getItem('token')
 
@@ -12,6 +16,7 @@ const Logout = (props) => {
                     localStorage.removeItem('token')
                     localStorage.removeItem('isAuthenticated');
                     props.onChange(false)
+                    setRedirectTo('/login');
                 }
             }).catch(error => console.log(error))
         }
@@ -19,6 +24,7 @@ const Logout = (props) => {
 
     return (
         <div>
+            <Redirect to={redirectTo} />
         </div>
     )
 }
