@@ -57,7 +57,6 @@ export class UserService {
         if (page) {
             url = `${ConstantsService.baseUrl}/customers?page=${page}`
         }
-        console.log(url)
         const customersPromise = Axios.get(url, {params: params}).then(res => ({
             ...UserService.parseCustomersData(res.data)
         }));
