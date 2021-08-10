@@ -205,26 +205,30 @@ const Dashboard = (props) => {
             <div className="text-center m-3">
                 <h3>Average Registration</h3>
             </div>  
-            
-            <div className="row">
-                <div className="col-md-8">
-                    <div  style={{
-                        width: '600px',
-                        height: '300px'
-                    }}>
-                     <Line data = {chartData} options = {chartOptions} />
+            {averageData ?
+                <div className="row">
+                    <div className="col-md-8">
+                        
+                        <div  style={{
+                            width: '600px',
+                            height: '300px'
+                        }}>
+                        <Line data = {chartData} options = {chartOptions} />
+                        </div>
                     </div>
-                </div>
-                <div className="col-md-4">
-                    <select className="btn btn-primary mt-5" onChange={handleselectDate}>
-                        <option value="last_24_hours">Last 24 hours</option>
-                        <option value="last_week">Last week</option>
-                        <option value="last_month">Last month</option>
-                        <option value="last_3_months">Last 3 months</option>
-                        <option value="last_year">Last year</option>
-                    </select>
-                </div>
+                    <div className="col-md-4">
+                        <select className="btn btn-primary mt-5" onChange={handleselectDate}>
+                            <option value="last_24_hours">Last 24 hours</option>
+                            <option value="last_week">Last week</option>
+                            <option value="last_month">Last month</option>
+                            <option value="last_3_months">Last 3 months</option>
+                            <option value="last_year">Last year</option>
+                        </select>
+                    </div>
             </div>
+            :
+            <div></div>
+            }
             </div>                           
         </div>
     

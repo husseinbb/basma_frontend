@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { UserService } from '../../services/UserService';
 import { Redirect } from "react-router-dom";
+import enTranslations from '@shopify/polaris/locales/en.json';
+import {AppProvider, Card} from '@shopify/polaris';
 
 const Login = (props) => {
 
@@ -43,22 +45,26 @@ const Login = (props) => {
             redirectTo !== '/login' ?
                 <Redirect to={redirectTo} />
             :
-                <div className="container w-25 text-center mt-5">
-                    <h1>Login</h1>
-                    <form onSubmit={login}>
-                        <div className="m-3 form-group">
-                            <input className="form-control" type="text" placeholder="Email" onChange={handleEmail} />
-                        </div>
+                <AppProvider i18n={enTranslations}>
+                    <div className="container w-25 text-center mt-5">
+                        <Card className="m-4" sectioned>
+                            <h1>Login</h1>
+                            <form onSubmit={login}>
+                                <div className="m-3 form-group">
+                                    <input className="form-control" type="text" placeholder="Email" onChange={handleEmail} />
+                                </div>
 
-                        <div className="m-3 form-group">
-                            <input className="form-control" type="password" placeholder="Password" onChange={handlePassword} />
-                        </div>
+                                <div className="m-3 form-group">
+                                    <input className="form-control" type="password" placeholder="Password" onChange={handlePassword} />
+                                </div>
 
-                        <div>
-                            <button className="btn btn-primary text-white">Login</button>
-                        </div>
-                    </form>
-                </div>
+                                <div>
+                                    <button className="btn btn-primary text-white">Login</button>
+                                </div>
+                            </form>
+                        </Card>
+                    </div>
+                </AppProvider>  
             }
         </div>
 

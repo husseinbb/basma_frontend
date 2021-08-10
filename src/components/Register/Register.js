@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { UserService } from '../../services/UserService';
 import SuccessfullRegistration from './SuccessfullRegistration';
+import enTranslations from '@shopify/polaris/locales/en.json';
+import {AppProvider, Card} from '@shopify/polaris';
 
 const Register = (props) => {
 
@@ -53,33 +55,36 @@ const Register = (props) => {
     }
     
     return (
-        <div>
+
+        <AppProvider i18n={enTranslations}>
             <div className="container w-25 text-center mt-5">
-                <h1>Register</h1>
-                <form onSubmit={register}>
+                <Card className="m-4" sectioned>
+                    <h1>Register</h1>
+                    <form onSubmit={register}>
 
-                    <div className="m-3 form-group">
-                        <input className="form-control" type="text" placeholder="First Name" onChange={handleFirstName} />
-                    </div>
+                        <div className="m-3 form-group">
+                            <input className="form-control" type="text" placeholder="First Name" onChange={handleFirstName} />
+                        </div>
 
-                    <div className="m-3 form-group">
-                        <input className="form-control" type="text" placeholder="Last Name" onChange={handleLastName} />
-                    </div>
+                        <div className="m-3 form-group">
+                            <input className="form-control" type="text" placeholder="Last Name" onChange={handleLastName} />
+                        </div>
 
-                    <div className="m-3 form-group">
-                        <input className="form-control" type="text" placeholder="Email" onChange={handleEmail} />
-                    </div>
+                        <div className="m-3 form-group">
+                            <input className="form-control" type="text" placeholder="Email" onChange={handleEmail} />
+                        </div>
 
-                    <div className="m-3 form-group">
-                        <input className="form-control" type="password" placeholder="Password" onChange={handlePassword} />
-                    </div>
+                        <div className="m-3 form-group">
+                            <input className="form-control" type="password" placeholder="Password" onChange={handlePassword} />
+                        </div>
 
-                    <div>
-                        <button className="btn btn-primary text-white">Register</button>
-                    </div>
-                </form>
+                        <div>
+                            <button className="btn btn-primary text-white">Register</button>
+                        </div>
+                    </form>
+                </Card> 
             </div>
-        </div>
+        </AppProvider>
     )
 
 }
