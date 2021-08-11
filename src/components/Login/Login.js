@@ -26,7 +26,7 @@ const Login = (props) => {
             password: password,
         }
         UserService.login(body).then(res => {
-            if (res.error) {
+            if (res.error || res.message) {
                 // to be displayed
                 console.log(res.error)
             }
