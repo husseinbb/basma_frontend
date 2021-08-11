@@ -13,7 +13,8 @@ export class UserService {
     static parseLoginData(data) { 
         const parsedData = {
             token: data.token,
-            error: data.error
+            error: data.error,
+            message: data.message,
         };
         return parsedData
     }
