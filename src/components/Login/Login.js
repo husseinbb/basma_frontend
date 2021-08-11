@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { UserService } from '../../services/UserService';
 import { Redirect } from "react-router-dom";
 import enTranslations from '@shopify/polaris/locales/en.json';
 import {AppProvider, Card} from '@shopify/polaris';
+import { loadReCaptcha } from 'react-recaptcha-v3';
+import ReCaptchaV3 from '../ReCaptcha/ReCaptchaV3';
+
 
 const Login = (props) => {
 
@@ -10,6 +13,11 @@ const Login = (props) => {
     let [password, setPassword] = useState("");
 
     let [redirectTo, setRedirectTo] = useState('/login');
+
+    useEffect(()=>{
+        loadReCaptcha('6Lfs9PMbAAAAAPTRFkXQSRf2yF-WCAr2W__ZzqHe', () => console.log("as"));
+    }, [])
+
 
     const handleEmail = (e) => {
        setEmail(e.target.value);
@@ -64,6 +72,7 @@ const Login = (props) => {
                             </form>
                         </Card>
                     </div>
+                    <ReCaptchaV3 />
                 </AppProvider>  
             }
         </div>
